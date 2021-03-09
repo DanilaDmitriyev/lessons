@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace LessonMonth
 {
+
+    
+
+
     class Program
     {
+        
         static void Main(string[] args)
         {
+
+            
         }
     }
+    
 }
