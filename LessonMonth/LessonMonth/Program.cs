@@ -50,7 +50,7 @@ namespace LessonMonth
                     Console.WriteLine(exception);
 
                 }
-                if (Console.ReadKey().KeyChar == 'z') break;
+                if (Console.ReadKey().KeyChar == 'z')  break;
 
             }
 
