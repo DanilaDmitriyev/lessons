@@ -32,6 +32,7 @@ namespace LessonMonth
         static void Main(string[] args)
         {
 
+            Class1.PrintEnum();
             for (; ; )
             {
                 Console.WriteLine("Введите название месяца (англ)");
