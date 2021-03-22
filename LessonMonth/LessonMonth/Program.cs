@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LessonMonth
-
+//Главное о enum
 {
     enum Month : byte
     {
