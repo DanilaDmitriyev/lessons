@@ -8,6 +8,12 @@ namespace Vehicles
 {
     class Program
     {
+        static void Ride (IMusculeVehicle musculeVehicle, float length)
+        {
+            for (float x = 0; x < length; x = x + 10)
+                musculeVehicle.RiderPower = musculeVehicle.RiderPower * 0.7;
+        }
+        
         static void Main(string[] args)
         {
             Vehicle bicycle = new Bicycle();
@@ -20,6 +26,11 @@ namespace Vehicles
             Boat MyBoat = new Boat();
             MyBoat.Displacement = 1200;
             bicycle2.NumberWheels = 2;
+
+            Ride(bicycle4, 21);
+            Console.WriteLine(bicycle4.RiderPower);
+            Console.ReadKey();
+
         }
     }
 }
