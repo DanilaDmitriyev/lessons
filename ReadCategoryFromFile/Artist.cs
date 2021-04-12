@@ -64,13 +64,13 @@ namespace ReadCategoryFromFile
 
         PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties()
         {
-            var tmp1 = TypeDescriptor.GetProperties(this.GetType());
-            var tmp2 = new PropertyDescriptor[tmp1.Count];
-            for(int i=0; i<tmp2.Length; i++)
+            var tmp1 = TypeDescriptor.GetProperties(this.GetType()); //получаем стандартные дескрипторы свойств, у которых категория хранится в атрибуте Category
+            var tmp2 = new PropertyDescriptor[tmp1.Count]; //создаём массив для заменённых дескрипторов свойств
+            for(int i=0; i<tmp2.Length; i++) //заполняем массив
             {
-                tmp2[i] = new ArtistPropertyDescriptor(tmp1[i]);
+                tmp2[i] = new ArtistPropertyDescriptor(tmp1[i]); //на основе стандартного дескриптора свойства делаем нестандратный, который берёт категорию из файла.
             }
-            return new PropertyDescriptorCollection(tmp2);
+            return new PropertyDescriptorCollection(tmp2); //возвращаем набор нестандартных дескрипторов свойств.
         }
 
         PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties(Attribute[] attributes)
