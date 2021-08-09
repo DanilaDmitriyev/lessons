@@ -28,11 +28,14 @@ namespace MyCollections
             get { return discipline; }
         }
         public List<Publication> Publications { get; } = new List<Publication>();
-        public int Throttle()
+        public int Throttle() //педагогическая нагрузка
         {
             return discipline.Sum(kv => kv.Value); //расширяющий метод и лямбда выражение
+            //kv - это формальный параметр
+            //kv => kv.Value - это фактический параметр методоа Sum
+            // лекция 4 слайды 19 и 20
         }
-        
+
     }
     class Program
     {
