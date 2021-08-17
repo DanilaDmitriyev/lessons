@@ -13,15 +13,15 @@ namespace MyEnum
         {
             Day day;
             string temp = Console.ReadLine();
-                        if (Enum.IsDefined(typeof(Day), temp)) Console.WriteLine("Да");
+                       /* if (Enum.IsDefined(typeof(Day), temp)) Console.WriteLine("Да");
             else if (int.TryParse(temp, out int result) && Enum.IsDefined(typeof(Day), result))
             {
                 Console.WriteLine("Числовое значение enum");
             }
-            else Console.WriteLine("Нет");
+            else Console.WriteLine("Нет");*/
 
 
-            /*if (Enum.IsDefined(typeof(Day), temp)) Console.WriteLine("Да");
+            if (Enum.IsDefined(typeof(Day), temp)) Console.WriteLine("Да");
             else if (int.TryParse(temp, out int result))
             {
                 if (Enum.IsDefined(typeof(Day), result)) Console.WriteLine("Числовое значение enum");
@@ -29,7 +29,7 @@ namespace MyEnum
             }
             else Console.WriteLine("Нет");
 
-            */
+            
 
             Console.ReadKey();
 
