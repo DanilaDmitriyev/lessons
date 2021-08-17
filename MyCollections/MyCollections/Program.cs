@@ -31,8 +31,8 @@ namespace MyCollections
         public int Throttle() //педагогическая нагрузка
         {
             return discipline.Sum(kv => kv.Value); //расширяющий метод и лямбда выражение
-            //kv - это формальный параметр
-            //kv => kv.Value - это фактический параметр методоа Sum
+            //kv - это формальный параметр (это объявление параметра) лямбда выражения
+            //kv => kv.Value - это фактический параметр (это конкретное фактическое значение параметра) метода Sum
             // лекция 4 слайды 19 и 20
         }
 
@@ -48,7 +48,7 @@ namespace MyCollections
         
 
 
-        static void Main(string[] args)
+        static void Main()
         {
 
         }
