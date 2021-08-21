@@ -10,7 +10,6 @@ namespace Enumus1
     {
         road = 1,
         door = 2,
-
         Car = 10,
         Smit = 9020
 
