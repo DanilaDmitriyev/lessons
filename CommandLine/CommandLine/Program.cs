@@ -14,6 +14,7 @@ namespace CommandLine
                 builder.Append(" ");
             }
             Console.WriteLine(builder.ToString());
+            //Console.WriteLine(string.Join(" ", args));
             Console.ReadKey();
         }
     }
