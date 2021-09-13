@@ -12,7 +12,7 @@ namespace MyMassive
     {
         static void Main(string[] args)
         {
-            int[,,,,] MyMassive = new int[10, 10, 10, 10, 10];
+            int[,,,,] MyMassive = new int[100, 100, 100, 100, 100];
 
             int n1, n2, n3, n4, n5;
             int i = 1;
