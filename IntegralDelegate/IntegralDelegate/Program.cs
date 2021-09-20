@@ -57,9 +57,23 @@ namespace IntegralDelegate
             return 1;
         }
 
+        static double Test1 (double x)
+        {
+            return 2*x;
+        }
+
+        static double Test2(double x)
+        {
+            return 2 * x+3;
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine(Integral(Test, 0, 1));
+            Console.WriteLine(Integral(Test1, 1, 3));
+            Console.WriteLine(Integral(Test2, 1, 3));
+            Console.WriteLine(Integral(Math.Exp, 1, 3));
+            Console.WriteLine(Math.Exp(3)-Math.Exp(1));
             Console.WriteLine(Integral(new Fuction(), 0, 1));
             Console.WriteLine(StandartIntegral(Test, 0, 1));
             Console.ReadKey();
