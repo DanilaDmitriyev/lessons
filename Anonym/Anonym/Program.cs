@@ -17,8 +17,9 @@ namespace Anonym
         static void Main(string[] args)
         {
             Employer[] factory = new Employer[10];
-            factory.Where(employer => employer.age > 30);
+            factory.Where(employer => employer.age > 30);//нажми F12
             factory.Where(employer_real);
+            factory.Where(delegate (Employer employer ) { return employer.age > 30; });
         }
         static bool employer_real (Employer employer)
         {
