@@ -6,19 +6,27 @@ using System.Linq;
 
 namespace Anonym
 {
-    class Employer
+    public delegate int MyDelegate(int x);
+    struct Employer
     {
         public int age;
         public string name;
         public string business;
+        public void EmpMetod(MyDelegate myDelegate) { Console.WriteLine(myDelegate(age)); }
     }
     class Program
     {
         static void Main(string[] args)
         {
             Employer[] factory = new Employer[10];
-            factory.Where(employer => employer.age > 30);
+            factory.Where(employer => employer.age > 30);//нажми F12
             factory.Where(employer_real);
+            factory.Where(delegate (Employer employer ) { return employer.age > 30; });
+            factory.OrderBy(employer => employer.business);
+            factory[0].age = 28;
+            factory[0].EmpMetod(x => x * x);
+            Console.ReadKey();
+
         }
         static bool employer_real (Employer employer)
         {
