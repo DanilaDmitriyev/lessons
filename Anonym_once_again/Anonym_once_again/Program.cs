@@ -13,9 +13,12 @@ namespace Anonym_once_again
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(MyMaximum(0, 5, 0, 5, (x, y) => x * y + 10));
+            Console.WriteLine(MyMaximum(0, 5, 0, 5, Mf));
+            Console.WriteLine(MyMaximum(0, 5, 0, 5, (x,y)=>x*x+y+10));//Анонимный метод
             Console.ReadKey();
+
         }
+        static double Mf(double x, double y) { return(x * x + y + 10); }
         static double MyMaximum (double xmin, double xmax, double ymin, double ymax, MyFunction myFunction) {
             double Max = double.MinValue;
             for(double x=xmin; x<=xmax; x = x + 0.0001)
