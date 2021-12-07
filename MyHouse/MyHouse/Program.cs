@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Text;
+//using System.Threading.Tasks;
 
 namespace MyHouse
 {
@@ -38,6 +38,10 @@ namespace MyHouse
             Material[] materials = new Material [0];
             materials.Where(m => m.Color == "red");
             materials.OrderByDescending(m => m.Weight).First();
+            materials.All(m => m.Weight <= 40);
+            materials.Any(m => m.Weight > 40);
+            materials.GroupBy(m => m.MaterialType).Count();
+            materials.GroupBy(m => m.MaterialType);
         }
     }
 }
