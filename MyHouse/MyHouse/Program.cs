@@ -35,7 +35,44 @@ namespace MyHouse
     {
         static void Main(string[] args)
         {
-            Material[] materials = new Material [0];
+            Material[] materials = new Material[]
+            {
+                new Material
+                {
+                    Size = 1000,
+                    Weight = 100,
+                    Color = "Red",
+                    MaterialType = "Wood"
+                    
+                },
+
+                new Material
+                {
+                    Size = 2000,
+                    Weight = 20,
+                    Color = "Black",
+                    MaterialType = "Metal"
+
+                },
+                 new Material
+                 {
+                    Size = 50,
+                    Weight = 20,
+                    Color = "Blue",
+                    MaterialType = "Metal"
+
+                },
+
+                new Material
+                {
+                    Size = 2000,
+                    Weight = 60,
+                    Color = "Black",
+                    MaterialType = "Metal"
+                }
+
+            };
+
             materials.Where(m => m.Color == "red");
             materials.OrderByDescending(m => m.Weight).First();
             materials.All(m => m.Weight <= 40);
@@ -45,3 +82,4 @@ namespace MyHouse
         }
     }
 }
+ 
