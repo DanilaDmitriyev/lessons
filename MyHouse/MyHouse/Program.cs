@@ -30,6 +30,10 @@ namespace MyHouse
             get { return color; }
             set { color = value; }
         }
+        public override string ToString()
+        {
+            return $"size {size} weight {weight} MaterialType {MaterialType}  color {color}";
+        }
     }
     class Program
     {
@@ -58,7 +62,7 @@ namespace MyHouse
                  {
                     Size = 50,
                     Weight = 20,
-                    Color = "Blue",
+                    Color = "Red",
                     MaterialType = "Metal"
 
                 },
@@ -73,13 +77,15 @@ namespace MyHouse
 
             };
 
-            materials.Where(m => m.Color == "red");
+            foreach (Material x in materials.Where(m => m.Color == "Red")) Console.WriteLine(x);
             materials.OrderByDescending(m => m.Weight).First();
             materials.All(m => m.Weight <= 40);
             materials.Any(m => m.Weight > 40);
-            materials.GroupBy(m => m.MaterialType).Count();
-            materials.GroupBy(m => m.MaterialType);
+            Console.WriteLine(materials.GroupBy(m => m.MaterialType).Count());
+            foreach (var x in materials.GroupBy(m => m.MaterialType).Select(g => new {Quantity= g.Count(), material_type = g.Key })) Console.WriteLine(x);
+            Console.ReadKey();
         }
     }
+
 }
  
