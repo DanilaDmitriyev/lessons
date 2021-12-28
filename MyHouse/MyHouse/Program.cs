@@ -83,9 +83,20 @@ namespace MyHouse
             materials.Any(m => m.Weight > 40);
             Console.WriteLine(materials.GroupBy(m => m.MaterialType).Count());
             foreach (var x in materials.GroupBy(m => m.MaterialType).Select(g => new {Quantity= g.Count(), material_type = g.Key })) Console.WriteLine(x);
+            foreach (Material x in (from e in materials where e.Color =="Red" select e)) Console.WriteLine(x);
+            (from e in materials orderby e.Weight descending select e).First();
             Console.ReadKey();
+
         }
     }
 
 }
- 
+
+
+/*Entity[] array = GetAllEntities();
+
+var ids = (from e in array
+           where e.Category == "Shoes"
+           orderby e.Price
+           select e.ID).ToList();*/
+
