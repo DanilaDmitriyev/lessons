@@ -39,9 +39,55 @@ namespace Competitions
                 new Competition
                 {
                     Date = new DateTime(2022,03,01),
+                    Name = "Drawing",
+                    Discipline = Discipline.drawing,
+                    Sex = Sex.boy,
+                    Participants = 10
                     // Дописать инициализаторы, а затем расширяющие методы.
+                },
+                new Competition
+                {
+                    Date = new DateTime(2022,04,01),
+                    Name = "Chess",
+                    Discipline = Discipline.chess,
+                    Sex = Sex.boy,
+                    Participants = 5
+                    // Дописать инициализаторы, а затем расширяющие методы.
+                },
+                new Competition
+                {
+                    Date = new DateTime(2022,04,02),
+                    Name = "Chess",
+                    Discipline = Discipline.chess,
+                    Sex = Sex.girl,
+                    Participants = 4
+                    // Дописать инициализаторы, а затем расширяющие методы.
+                },
+                new Competition
+                {
+                    Date = new DateTime(2022,04,01),
+                    Name = "Music",
+                    Discipline = Discipline.music,
+                    Sex = Sex.girl,
+                    Participants = 20
+                    // Дописать инициализаторы, а затем расширяющие методы.
+                },
+                new Competition
+                {
+                    Date = new DateTime(2022,05,09),
+                    Name = "GloryDay",
+                    Discipline=Discipline.music,
+                    Sex= Sex.boy,
+                    Participants = 50
                 }
+                
             };
+            competition.Where(x => x.Sex == Sex.boy).OrderByDescending(x => x.Participants).First();
+            //competition.Where(IsBoy) продолжить здесь!!!!!!!!!!!!!!!!!!!!!
+        }
+        static bool IsBoy (Competition competition)
+        {
+            return competition.Sex == Sex.boy;
         }
     }
 }
