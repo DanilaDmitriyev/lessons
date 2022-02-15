@@ -83,11 +83,16 @@ namespace Competitions
                 
             };
             competition.Where(x => x.Sex == Sex.boy).OrderByDescending(x => x.Participants).First();
-            //competition.Where(IsBoy) продолжить здесь!!!!!!!!!!!!!!!!!!!!!
+            competition.Where(IsBoy).OrderByDescending(MakeOrder).First(); 
         }
         static bool IsBoy (Competition competition)
         {
             return competition.Sex == Sex.boy;
         }
+        static int MakeOrder(Competition competition)
+        {
+            return competition.Participants;
+        }
+
     }
 }
