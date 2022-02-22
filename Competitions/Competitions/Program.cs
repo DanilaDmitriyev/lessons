@@ -56,7 +56,7 @@ namespace Competitions
                 },
                 new Competition
                 {
-                    Date = new DateTime(2022,04,02),
+                    Date = new DateTime(2022,02,02),
                     Name = "Chess",
                     Discipline = Discipline.chess,
                     Sex = Sex.girl,
@@ -83,7 +83,12 @@ namespace Competitions
                 
             };
             competition.Where(x => x.Sex == Sex.boy).OrderByDescending(x => x.Participants).First();
-            competition.Where(IsBoy).OrderByDescending(MakeOrder).First(); 
+            competition.Where(IsBoy).OrderByDescending(MakeOrder).First();
+            competition.Where(x => x.Discipline == Discipline.chess && x.Date > DateTime.Now).OrderBy
+                (x => x.Date).First();
+            competition.Where(x => x.Date > DateTime.Now).Count();
+            competition.Count(x => x.Date > DateTime.Now);
+            competition.GroupBy(x => x.Discipline).Count();
         }
         static bool IsBoy (Competition competition)
         {
