@@ -80,6 +80,7 @@ namespace MyHomeForm
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // openButton
             // 
@@ -89,6 +90,7 @@ namespace MyHomeForm
             this.openButton.TabIndex = 5;
             this.openButton.Text = "Открыть";
             this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // Form1
             // 
