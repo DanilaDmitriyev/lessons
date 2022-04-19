@@ -17,11 +17,17 @@ namespace Notebook
             InitializeComponent();
 
         }
-        public String Content { get
+        public String Content
+        {
+            get
             {
                 return contentBox.Text;
-            } 
-        set { contentBox.Text = value; }
+            }
+            set
+            {
+                contentBox.Text = value;
+            }
         }
+        public String Path { get; set; }
     }
 }

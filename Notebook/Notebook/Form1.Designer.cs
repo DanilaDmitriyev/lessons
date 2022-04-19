@@ -33,6 +33,8 @@ namespace Notebook
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,9 @@ namespace Notebook
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
-            this.saveFileToolStripMenuItem});
+            this.saveFileToolStripMenuItem,
+            this.createFileToolStripMenuItem,
+            this.saveFileAsToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(54, 29);
             this.toolStripMenuItem1.Text = "File";
@@ -70,6 +74,20 @@ namespace Notebook
             this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.saveFileToolStripMenuItem.Text = "Save file...";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            // 
+            // createFileToolStripMenuItem
+            // 
+            this.createFileToolStripMenuItem.Name = "createFileToolStripMenuItem";
+            this.createFileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.createFileToolStripMenuItem.Text = "Create file...";
+            this.createFileToolStripMenuItem.Click += new System.EventHandler(this.createFileToolStripMenuItem_Click);
+            // 
+            // saveFileAsToolStripMenuItem
+            // 
+            this.saveFileAsToolStripMenuItem.Name = "saveFileAsToolStripMenuItem";
+            this.saveFileAsToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.saveFileAsToolStripMenuItem.Text = "Save file as...";
+            this.saveFileAsToolStripMenuItem.Click += new System.EventHandler(this.saveFileAsToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -94,6 +112,8 @@ namespace Notebook
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveFileAsToolStripMenuItem;
     }
 }
 
