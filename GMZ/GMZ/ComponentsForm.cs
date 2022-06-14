@@ -15,11 +15,22 @@ namespace GMZ
         public ComponentsForm()
         {
             InitializeComponent();
+            dataComponentBindingSource.DataSource = new BindingList<DataComponent>();
         }
 
-        private void ComponentsForm_Activated(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

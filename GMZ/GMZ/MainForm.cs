@@ -17,12 +17,7 @@ namespace GMZ
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ComponentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ItemComponents_Click(object sender, EventArgs e)
         {
             ComponentsForm componentsForm = this.MdiChildren.OfType<ComponentsForm>().FirstOrDefault();
             if (componentsForm == null)

@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMZ", "GMZ\GMZ.csproj", "{0DDC7050-979B-44D6-AE3D-F1E56AAB127E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMSwin", "GMSwin\GMSwin.csproj", "{52D8358A-047C-4F1B-8A04-30E309A0B4AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMZ", "GMZ\GMZ.csproj", "{52D8358A-047C-4F1B-8A04-30E309A0B4AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0DDC7050-979B-44D6-AE3D-F1E56AAB127E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DDC7050-979B-44D6-AE3D-F1E56AAB127E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DDC7050-979B-44D6-AE3D-F1E56AAB127E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DDC7050-979B-44D6-AE3D-F1E56AAB127E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52D8358A-047C-4F1B-8A04-30E309A0B4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{52D8358A-047C-4F1B-8A04-30E309A0B4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52D8358A-047C-4F1B-8A04-30E309A0B4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
