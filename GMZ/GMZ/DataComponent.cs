@@ -16,7 +16,7 @@ namespace GMZ
     }
     public class DataComponent
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "Компонент";
         public decimal Price { get; set; }
         public Dimension Dimension { get; set; }
         public string Annotation { get; set; }

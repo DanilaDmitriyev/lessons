@@ -35,14 +35,14 @@ namespace GMZ
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.dataComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.priceBox = new System.Windows.Forms.TextBox();
+            this.dimensionBox = new System.Windows.Forms.ComboBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -98,20 +98,21 @@ namespace GMZ
             // dataComponentBindingSource
             // 
             this.dataComponentBindingSource.DataSource = typeof(GMZ.DataComponent);
+            this.dataComponentBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.dataComponentBindingSource_ListChanged);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.nameBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.priceBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dimensionBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textBox, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -123,17 +124,16 @@ namespace GMZ
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 345);
             this.tableLayoutPanel1.TabIndex = 2;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // textBox1
+            // nameBox
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Name", true));
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(175, 7);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 26);
-            this.textBox1.TabIndex = 0;
+            this.nameBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Name", true));
+            this.nameBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nameBox.Location = new System.Drawing.Point(175, 7);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(7);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(250, 26);
+            this.nameBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -144,7 +144,6 @@ namespace GMZ
             this.label1.Size = new System.Drawing.Size(83, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Название";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -175,36 +174,40 @@ namespace GMZ
             this.label4.Size = new System.Drawing.Size(104, 25);
             this.label4.TabIndex = 4;
             this.label4.Text = "Примечания";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox2
+            // priceBox
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(175, 47);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(250, 26);
-            this.textBox2.TabIndex = 5;
+            this.priceBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Price", true));
+            this.priceBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.priceBox.Location = new System.Drawing.Point(175, 47);
+            this.priceBox.Margin = new System.Windows.Forms.Padding(7);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(250, 26);
+            this.priceBox.TabIndex = 5;
             // 
-            // comboBox1
+            // dimensionBox
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(175, 87);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(250, 28);
-            this.comboBox1.TabIndex = 6;
+            this.dimensionBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dataComponentBindingSource, "Dimension", true));
+            this.dimensionBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dimensionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dimensionBox.FormattingEnabled = true;
+            this.dimensionBox.Location = new System.Drawing.Point(175, 87);
+            this.dimensionBox.Margin = new System.Windows.Forms.Padding(7);
+            this.dimensionBox.Name = "dimensionBox";
+            this.dimensionBox.Size = new System.Drawing.Size(250, 28);
+            this.dimensionBox.TabIndex = 6;
+            this.dimensionBox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.dimensionBox_Format);
             // 
-            // textBox3
+            // textBox
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(175, 129);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(250, 97);
-            this.textBox3.TabIndex = 7;
+            this.textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Annotation", true));
+            this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox.Location = new System.Drawing.Point(175, 129);
+            this.textBox.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(250, 97);
+            this.textBox.TabIndex = 7;
             // 
             // bindingNavigator1
             // 
@@ -352,7 +355,7 @@ namespace GMZ
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.BindingSource dataComponentBindingSource;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
@@ -371,8 +374,8 @@ namespace GMZ
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox priceBox;
+        private System.Windows.Forms.ComboBox dimensionBox;
+        private System.Windows.Forms.TextBox textBox;
     }
 }

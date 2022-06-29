@@ -16,21 +16,28 @@ namespace GMZ
         {
             InitializeComponent();
             dataComponentBindingSource.DataSource = new BindingList<DataComponent>();
+            dimensionBox.DataSource = Enum.GetValues(typeof(Dimension));
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+       
 
+        
+        private void dataComponentBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            tableLayoutPanel1.Enabled = dataComponentBindingSource.Count > 0;
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void dimensionBox_Format(object sender, ListControlConvertEventArgs e)
         {
+            switch ((Dimension)e.ListItem) 
+            {
+                case Dimension.Kg: e.Value = "Кг"; break;
+                case Dimension.gr: e.Value = "гр"; break;
+                case Dimension.L: e.Value = "Литр"; break;
+                case Dimension.item: e.Value = "Шт."; break;
 
-        }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+                    }
         }
     }
 }
