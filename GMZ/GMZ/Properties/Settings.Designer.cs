@@ -22,5 +22,17 @@ namespace GMZ.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PATH {
+            get {
+                return ((string)(this["PATH"]));
+            }
+            set {
+                this["PATH"] = value;
+            }
+        }
     }
 }
