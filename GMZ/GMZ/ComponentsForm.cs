@@ -15,10 +15,17 @@ namespace GMZ
         public ComponentsForm()
         {
             InitializeComponent();
-            dataComponentBindingSource.DataSource = new BindingList<DataComponent>();
+            dataComponentBindingSource.DataSource = new BindingList<DataComponent>(dataRepository.Components);
             dimensionBox.DataSource = Enum.GetValues(typeof(Dimension));
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            DataRepository.SaveData(dataRepository);
+        }
+
+        private DataRepository dataRepository = DataRepository.GetRepository();
        
 
         
