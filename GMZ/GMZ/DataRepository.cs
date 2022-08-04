@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
 namespace GMZ
 {
-    class DataRepository
+    public class DataRepository
     {
         
         private static string m_path;
