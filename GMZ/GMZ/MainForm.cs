@@ -28,5 +28,17 @@ namespace GMZ
             }
             else componentsForm.Activate();
         }
+
+        private void m_cmd_product_Click(object sender, EventArgs e)
+        {
+            ProductsForm productsForm = this.MdiChildren.OfType<ProductsForm>().FirstOrDefault();
+            if (productsForm == null)
+            {
+                productsForm = new ProductsForm();
+                productsForm.MdiParent = this;
+                productsForm.Show();
+            }
+            else productsForm.Activate();
+        }
     }
 }

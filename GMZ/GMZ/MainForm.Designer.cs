@@ -30,46 +30,56 @@ namespace GMZ
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ItemComponents = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_cmd_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_cmd_components = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_cmd_product = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.ItemComponents});
+            this.m_cmd_file,
+            this.m_cmd_components,
+            this.m_cmd_product});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(533, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // файлToolStripMenuItem
+            // m_cmd_file
             // 
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.m_cmd_file.Name = "m_cmd_file";
+            this.m_cmd_file.Size = new System.Drawing.Size(48, 22);
+            this.m_cmd_file.Text = "Файл";
             // 
-            // ItemComponents
+            // m_cmd_components
             // 
-            this.ItemComponents.Name = "ItemComponents";
-            this.ItemComponents.Size = new System.Drawing.Size(132, 29);
-            this.ItemComponents.Text = "Компоненты";
-            this.ItemComponents.Click += new System.EventHandler(this.ItemComponents_Click);
+            this.m_cmd_components.Name = "m_cmd_components";
+            this.m_cmd_components.Size = new System.Drawing.Size(90, 22);
+            this.m_cmd_components.Text = "Компоненты";
+            this.m_cmd_components.Click += new System.EventHandler(this.ItemComponents_Click);
+            // 
+            // m_cmd_product
+            // 
+            this.m_cmd_product.Name = "m_cmd_product";
+            this.m_cmd_product.Size = new System.Drawing.Size(65, 22);
+            this.m_cmd_product.Text = "Продукт";
+            this.m_cmd_product.Click += new System.EventHandler(this.m_cmd_product_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 444);
+            this.ClientSize = new System.Drawing.Size(533, 300);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(500, 500);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(339, 339);
             this.Name = "MainForm";
             this.Text = "ГМЗ";
             this.menuStrip1.ResumeLayout(false);
@@ -82,8 +92,9 @@ namespace GMZ
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ItemComponents;
+        private System.Windows.Forms.ToolStripMenuItem m_cmd_file;
+        private System.Windows.Forms.ToolStripMenuItem m_cmd_components;
+        private System.Windows.Forms.ToolStripMenuItem m_cmd_product;
     }
 }
 
