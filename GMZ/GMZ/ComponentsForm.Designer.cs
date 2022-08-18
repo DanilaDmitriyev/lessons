@@ -43,6 +43,8 @@ namespace GMZ
             this.priceBox = new System.Windows.Forms.TextBox();
             this.dimensionBox = new System.Windows.Forms.ComboBox();
             this.textBox = new System.Windows.Forms.TextBox();
+            this.article = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -105,31 +107,34 @@ namespace GMZ
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.nameBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.priceBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dimensionBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.nameBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.priceBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dimensionBox, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textBox, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.article, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 345);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 347);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // nameBox
             // 
             this.nameBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Name", true));
             this.nameBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nameBox.Location = new System.Drawing.Point(175, 7);
+            this.nameBox.Location = new System.Drawing.Point(175, 47);
             this.nameBox.Margin = new System.Windows.Forms.Padding(7);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(250, 26);
@@ -138,7 +143,7 @@ namespace GMZ
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 40);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label1.Size = new System.Drawing.Size(83, 25);
@@ -148,7 +153,7 @@ namespace GMZ
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 40);
+            this.label2.Location = new System.Drawing.Point(3, 80);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label2.Size = new System.Drawing.Size(48, 25);
@@ -158,7 +163,7 @@ namespace GMZ
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 80);
+            this.label3.Location = new System.Drawing.Point(3, 120);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label3.Size = new System.Drawing.Size(162, 25);
@@ -168,7 +173,7 @@ namespace GMZ
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 122);
+            this.label4.Location = new System.Drawing.Point(3, 162);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label4.Size = new System.Drawing.Size(104, 25);
@@ -179,7 +184,7 @@ namespace GMZ
             // 
             this.priceBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Price", true));
             this.priceBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.priceBox.Location = new System.Drawing.Point(175, 47);
+            this.priceBox.Location = new System.Drawing.Point(175, 87);
             this.priceBox.Margin = new System.Windows.Forms.Padding(7);
             this.priceBox.Name = "priceBox";
             this.priceBox.Size = new System.Drawing.Size(250, 26);
@@ -191,7 +196,7 @@ namespace GMZ
             this.dimensionBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dimensionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dimensionBox.FormattingEnabled = true;
-            this.dimensionBox.Location = new System.Drawing.Point(175, 87);
+            this.dimensionBox.Location = new System.Drawing.Point(175, 127);
             this.dimensionBox.Margin = new System.Windows.Forms.Padding(7);
             this.dimensionBox.Name = "dimensionBox";
             this.dimensionBox.Size = new System.Drawing.Size(250, 28);
@@ -200,14 +205,35 @@ namespace GMZ
             // 
             // textBox
             // 
-            this.textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Annotation", true));
+            this.textBox.AcceptsReturn = true;
+            this.textBox.DataBindings.Add(new System.Windows.Forms.Binding("Lines", this.dataComponentBindingSource, "Annotation", true));
             this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox.Location = new System.Drawing.Point(175, 129);
+            this.textBox.Location = new System.Drawing.Point(175, 169);
             this.textBox.Margin = new System.Windows.Forms.Padding(7);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(250, 97);
+            this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox.Size = new System.Drawing.Size(250, 78);
             this.textBox.TabIndex = 7;
+            // 
+            // article
+            // 
+            this.article.AutoSize = true;
+            this.article.Location = new System.Drawing.Point(3, 0);
+            this.article.Name = "article";
+            this.article.Size = new System.Drawing.Size(72, 20);
+            this.article.TabIndex = 8;
+            this.article.Text = "Артикул";
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataComponentBindingSource, "Article", true));
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(175, 7);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(250, 26);
+            this.textBox1.TabIndex = 9;
             // 
             // bindingNavigator1
             // 
@@ -235,7 +261,7 @@ namespace GMZ
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(432, 33);
+            this.bindingNavigator1.Size = new System.Drawing.Size(432, 31);
             this.bindingNavigator1.TabIndex = 1;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -245,13 +271,13 @@ namespace GMZ
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(65, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 28);
             this.bindingNavigatorCountItem.Text = "для {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
@@ -261,7 +287,7 @@ namespace GMZ
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorDeleteItem.Text = "Удалить";
             // 
             // bindingNavigatorMoveFirstItem
@@ -270,7 +296,7 @@ namespace GMZ
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
             // 
             // bindingNavigatorMovePreviousItem
@@ -279,13 +305,13 @@ namespace GMZ
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 33);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 31);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -300,7 +326,7 @@ namespace GMZ
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 33);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -308,7 +334,7 @@ namespace GMZ
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
             // 
             // bindingNavigatorMoveLastItem
@@ -317,13 +343,13 @@ namespace GMZ
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 33);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // ComponentsForm
             // 
@@ -377,5 +403,7 @@ namespace GMZ
         private System.Windows.Forms.TextBox priceBox;
         private System.Windows.Forms.ComboBox dimensionBox;
         private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.Label article;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
