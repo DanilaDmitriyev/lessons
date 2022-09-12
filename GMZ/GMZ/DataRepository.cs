@@ -10,6 +10,7 @@ namespace GMZ
         
         private static string m_path;
         private static string fileName = System.IO.Path.Combine(Path, "GMZdata.xml");
+        private static DataRepository instance;
         public static string Path
         {
             get
@@ -21,14 +22,16 @@ namespace GMZ
             }
         }
         public List<DataComponent> Components { get; } = new List<DataComponent>();
+        public List<Product> Products { get; } = new List<Product>();
         private static XmlSerializer xmlSerializer = new XmlSerializer(typeof(DataRepository));
         //Создать метод, который будет возвращать DataRepository, прочитанный из файла.
         public static DataRepository GetRepository()
         {
-            if (!File.Exists(fileName)) return new DataRepository();
+            if (instance != null) return instance;
+            if (!File.Exists(fileName)) return instance = new DataRepository();
             using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
             {
-                return (DataRepository)xmlSerializer.Deserialize(fileStream);
+                return instance = (DataRepository)xmlSerializer.Deserialize(fileStream);
             }
 
         }
@@ -38,6 +41,7 @@ namespace GMZ
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 xmlSerializer.Serialize(fileStream, dataRepository);
+                instance = dataRepository;
             }
         }
     }
