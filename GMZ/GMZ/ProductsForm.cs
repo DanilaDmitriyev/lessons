@@ -18,6 +18,7 @@ namespace GMZ
         {
             InitializeComponent();
             productBindingSource.DataSource = new BindingList<Product>(dataRepository.Products);
+            dataComponentBindingSource.DataSource = dataRepository.Components;
             dimensionBox.DataSource = Enum.GetValues(typeof(Dimension));
         }
 

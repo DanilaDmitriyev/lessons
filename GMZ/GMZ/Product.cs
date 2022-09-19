@@ -18,25 +18,45 @@ namespace GMZ
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Product()
+        {
+            this.ProductComponents.ListChanged += (o, e) => 
+            {
+                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("Price"));
+            };
+        }
+
         public decimal DirectCosts
         {
             get { return directCosts; }
             set { directCosts = value;
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectCosts"));
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DirectCosts"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("Price"));
+                }
             }
         }    
         public decimal IndirectCosts
         {
             get { return indirectCosts; }
             set { indirectCosts = value;
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("IndirectCosts"));
+                if (PropertyChanged != null)
+                { 
+                    PropertyChanged(this, new PropertyChangedEventArgs("IndirectCosts"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("Price"));
+                }
             }
         }
         public decimal ExtraCharge
         {
             get { return extraCharge; }
             set { extraCharge = value;
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("ExtraCharge"));
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("ExtraCharge"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("Price"));
+                }
             }
         }
         public string [] Annotation { get; set; }
@@ -44,7 +64,10 @@ namespace GMZ
 
         public decimal Price
         {
-            get { return ProductComponents.Sum(x => DataRepository.GetRepository().Components.Where(y => y.Article == x.ComponentArticle).Select(y => y.Price).FirstOrDefault() * x.ComponentQuantity); }
+            get { return (ProductComponents.Sum(x => 
+            DataRepository.GetRepository().Components.Where(y =>
+            y.Article == x.ComponentArticle).Select(y => y.Price).FirstOrDefault() * 
+            x.ComponentQuantity)+DirectCosts + IndirectCosts)*(1+ExtraCharge/100); }
         }
     }
 
@@ -52,7 +75,7 @@ namespace GMZ
     {
         private string componentArticle;
         private decimal componentQuantity;
-        public String ComponentArticle
+        public String ComponentArticle 
         {
             get { return componentArticle; }
             set { componentArticle = value;
