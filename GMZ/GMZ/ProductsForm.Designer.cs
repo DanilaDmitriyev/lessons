@@ -49,6 +49,10 @@ namespace GMZ
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dimensionBox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.componentArticleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.componentQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productComponentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -65,10 +69,6 @@ namespace GMZ
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.productComponentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.componentArticleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.componentQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,11 +76,11 @@ namespace GMZ
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataComponentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productComponentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productComponentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataComponentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -299,6 +299,33 @@ namespace GMZ
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(376, 92);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            // 
+            // componentArticleDataGridViewTextBoxColumn
+            // 
+            this.componentArticleDataGridViewTextBoxColumn.DataPropertyName = "ComponentArticle";
+            this.componentArticleDataGridViewTextBoxColumn.DataSource = this.dataComponentBindingSource;
+            this.componentArticleDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.componentArticleDataGridViewTextBoxColumn.HeaderText = "ComponentArticle";
+            this.componentArticleDataGridViewTextBoxColumn.Name = "componentArticleDataGridViewTextBoxColumn";
+            this.componentArticleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.componentArticleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.componentArticleDataGridViewTextBoxColumn.ValueMember = "Article";
+            // 
+            // dataComponentBindingSource
+            // 
+            this.dataComponentBindingSource.DataSource = typeof(GMZ.DataComponent);
+            // 
+            // componentQuantityDataGridViewTextBoxColumn
+            // 
+            this.componentQuantityDataGridViewTextBoxColumn.DataPropertyName = "ComponentQuantity";
+            this.componentQuantityDataGridViewTextBoxColumn.HeaderText = "ComponentQuantity";
+            this.componentQuantityDataGridViewTextBoxColumn.Name = "componentQuantityDataGridViewTextBoxColumn";
+            // 
+            // productComponentsBindingSource
+            // 
+            this.productComponentsBindingSource.DataMember = "ProductComponents";
+            this.productComponentsBindingSource.DataSource = this.productBindingSource;
             // 
             // textBox4
             // 
@@ -458,32 +485,6 @@ namespace GMZ
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // productComponentsBindingSource
-            // 
-            this.productComponentsBindingSource.DataMember = "ProductComponents";
-            this.productComponentsBindingSource.DataSource = this.productBindingSource;
-            // 
-            // dataComponentBindingSource
-            // 
-            this.dataComponentBindingSource.DataSource = typeof(GMZ.DataComponent);
-            // 
-            // componentArticleDataGridViewTextBoxColumn
-            // 
-            this.componentArticleDataGridViewTextBoxColumn.DataPropertyName = "ComponentArticle";
-            this.componentArticleDataGridViewTextBoxColumn.DataSource = this.dataComponentBindingSource;
-            this.componentArticleDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.componentArticleDataGridViewTextBoxColumn.HeaderText = "ComponentArticle";
-            this.componentArticleDataGridViewTextBoxColumn.Name = "componentArticleDataGridViewTextBoxColumn";
-            this.componentArticleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.componentArticleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.componentArticleDataGridViewTextBoxColumn.ValueMember = "Article";
-            // 
-            // componentQuantityDataGridViewTextBoxColumn
-            // 
-            this.componentQuantityDataGridViewTextBoxColumn.DataPropertyName = "ComponentQuantity";
-            this.componentQuantityDataGridViewTextBoxColumn.HeaderText = "ComponentQuantity";
-            this.componentQuantityDataGridViewTextBoxColumn.Name = "componentQuantityDataGridViewTextBoxColumn";
-            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,12 +504,12 @@ namespace GMZ
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataComponentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productComponentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productComponentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataComponentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

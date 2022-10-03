@@ -44,5 +44,10 @@ namespace GMZ
         {
             tableLayoutPanel1.Enabled = productBindingSource.Count > 0;
         }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ToString();
+        }
     }
 }
