@@ -34,14 +34,14 @@
             this.number2 = new System.Windows.Forms.Label();
             this.action = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.elementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox2 = new System.Windows.Forms.NumericUpDown();
             this.actionBox = new System.Windows.Forms.ComboBox();
             this.Result = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.elementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elementsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -121,6 +121,10 @@
             this.textBox1.Size = new System.Drawing.Size(433, 29);
             this.textBox1.TabIndex = 3;
             // 
+            // elementsBindingSource
+            // 
+            this.elementsBindingSource.DataSource = typeof(Calculator.Elements);
+            // 
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elementsBindingSource, "Element2", true));
@@ -171,10 +175,6 @@
             this.textBox3.Size = new System.Drawing.Size(435, 29);
             this.textBox3.TabIndex = 7;
             // 
-            // elementsBindingSource
-            // 
-            this.elementsBindingSource.DataSource = typeof(Calculator.Elements);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -187,8 +187,8 @@
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elementsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

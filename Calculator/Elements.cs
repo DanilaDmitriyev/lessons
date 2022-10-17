@@ -25,7 +25,10 @@ namespace Calculator
             set
             {
                 element1 = value;
-                if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Element1")); PropertyChanged(this, new PropertyChangedEventArgs("Result")); }
+                if (PropertyChanged != null) { 
+                    PropertyChanged(this, new PropertyChangedEventArgs("Element1")); 
+                    PropertyChanged(this, new PropertyChangedEventArgs("Result"));
+                }
             }
         }
         public double Element2 { get => element2; set { element2 = value; if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Element2")); PropertyChanged(this, new PropertyChangedEventArgs("Result")); } } }
