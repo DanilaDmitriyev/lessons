@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calculator_event
@@ -18,11 +12,6 @@ namespace Calculator_event
             operation.SelectedItem = "+";
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void calculate_Click(object sender, EventArgs e)
         {
             double fig1_val = Double.Parse(fig1.Text);
@@ -30,7 +19,7 @@ namespace Calculator_event
             switch (operation.Text[0])
             {
                 case '+': result.Text = (fig1_val+fig2_val).ToString(); break; 
-                    case '-': result.Text = (fig1_val-fig2_val).ToString(); break;
+                case '-': result.Text = (fig1_val-fig2_val).ToString(); break;
                 case '/': result.Text = (fig1_val/fig2_val).ToString(); break;
                 case '*': result.Text = (fig1_val*fig2_val).ToString(); break;  
             }
@@ -38,7 +27,7 @@ namespace Calculator_event
 
         private void fig1_Validating(object sender, CancelEventArgs e)
         {
-            e.Cancel = !double.TryParse(fig1.Text, out double _);
+            e.Cancel = !double.TryParse(((TextBox)sender).Text, out double _);
         }
     }
 }
