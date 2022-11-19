@@ -14,8 +14,7 @@ namespace EnumPrint
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Danila");
-
+            
             MyEnum[] myEnums = (MyEnum[])Enum.GetValues(typeof(MyEnum));
 
 
