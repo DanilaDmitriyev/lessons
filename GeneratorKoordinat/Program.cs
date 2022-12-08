@@ -90,40 +90,70 @@ namespace GeneratorKoordinat
             Console.ReadKey();
             */
             Console.WriteLine("Введите ширину комнаты в мм, например 4000");
-            float roomWidth = float.Parse (Console.ReadLine());
+            float roomWidth = float.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите длину комнат в мм, например 8000");
-            float roomHeight = float.Parse (Console.ReadLine());
+            float roomHeight = float.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите шаг трубы в мм (расстояние межуд параллельными трубами), к примеру 200");
-            float step = float.Parse (Console.ReadLine());
-            
-            int stripNumberX = (int) Math.Round(roomWidth / step);
-            int stripNumberY = (int) Math.Round(roomHeight / step);
+            float step = float.Parse(Console.ReadLine());
+
+            int stripNumberX = (int)(roomWidth / step);
+            int stripNumberY = (int)(roomHeight / step);
 
             int knotNumberWidth = stripNumberX + 1;
             int knotNumberHeight = stripNumberY + 1;
 
+            float tempUdlinenieХ = roomWidth / roomHeight;
+            float tempUdlinenieY = roomHeight / roomWidth;
+            float udlinenieX = 1;
+            float udlinenieY = 1;
+
+            if (tempUdlinenieY/tempUdlinenieХ> 1)
+            {
+                udlinenieY = tempUdlinenieY / tempUdlinenieХ;
+                            }
+            else if (tempUdlinenieY / tempUdlinenieХ < 1)
+            {
+                udlinenieX = tempUdlinenieY / tempUdlinenieY;
+            }
+            else if (tempUdlinenieY == tempUdlinenieХ)
+            {
+                udlinenieX = 1;
+                udlinenieY = 1;
+            }
+
+
             float tempMarginesWidth = roomWidth - step * stripNumberX;
             float MarginesWidth = 0;
-            
+
+            float tempMarginesHeight = roomHeight - step * stripNumberY;
+            float MarginesHeight = 0;
+
             if (tempMarginesWidth == 0)
             {
-                MarginesWidth = step/2;
-                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + MarginesWidth);
+                MarginesWidth = step / 2;
+                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)MarginesWidth);
             }
-            else if ((0 < tempMarginesWidth)&(tempMarginesWidth < step/2))
+            else if (tempMarginesWidth < step)
             {
-                MarginesWidth = (roomWidth - step * stripNumberX) / 2 + step;
-                knotNumberWidth = knotNumberWidth - 1;
-                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + MarginesWidth);
+                MarginesWidth = (roomWidth - step * stripNumberX) / 2;
+                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)MarginesWidth);
             }
-            else if (0 > tempMarginesWidth)
+
+            if (tempMarginesHeight == 0)
             {
-                MarginesWidth = tempMarginesWidth - отброшенная при округлении часть
+                MarginesHeight = step / 2;
+                Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)MarginesHeight);
             }
-            
+            else if (tempMarginesHeight < step)
+            {
+                MarginesHeight = (roomHeight - step * stripNumberY) / 2;
+                Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)MarginesHeight);
+            }
+
             Console.ReadKey();
         }
     }
 }
+
