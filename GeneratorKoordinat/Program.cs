@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace GeneratorKoordinat
 {
@@ -10,7 +11,7 @@ namespace GeneratorKoordinat
     {
         static void Main(string[] args)
         {
-            /*
+            
             int step = 6;
             //int nX = 10; //количество узлов по оси Х.
             //int nY = 10; //количество узлов по оси У.
@@ -60,12 +61,12 @@ namespace GeneratorKoordinat
 
             }
             x1=x4;
-            y1 = y4 + 1;
-            x2 = x1 -3;
+            y1 = y4 -1;
+            x2 = x1 + 1;
             y2 = y1;
-            x3 = x2;
-            y3 = y2 -4;
-            x4 = x3 + 6;
+            x3 = x2 ;
+            y3 = y2 + 2;
+            x4 = x3 - 4;
             y4 = y3;
 
             xcoord.Add(x1);
@@ -77,6 +78,18 @@ namespace GeneratorKoordinat
             ycoord.Add(y3);
             ycoord.Add(y4);
 
+            using (StreamWriter streamWriter = new StreamWriter("figura.html"))
+            {
+                streamWriter.WriteLine("<svg width=\"500\" height=\"500\">");
+                streamWriter.Write($"<path stroke=\"blue\" fill=\"transparent\" stroke-width=\"4px\" d=\"M {2 + xcoord[0]*35 } {498 - ycoord[0]*35 } ");
+                for (int i = 1; i<xcoord.Count; i++)
+                {
+                    streamWriter.Write($"L {2 + xcoord[i] * 35} {498 - ycoord[i] * 35} ");
+                }
+                streamWriter.WriteLine(" \"/>");
+                streamWriter.WriteLine("</svg>");
+            }
+            /*
             Console.WriteLine("X");           
             foreach(var item in xcoord)
             {
@@ -88,7 +101,7 @@ namespace GeneratorKoordinat
                 Console.WriteLine(item);
             }
             Console.ReadKey();
-            */
+            
             Console.WriteLine("Введите ширину комнаты в мм, например 4000");
             float roomWidth = float.Parse(Console.ReadLine());
 
@@ -153,6 +166,7 @@ namespace GeneratorKoordinat
             }
 
             Console.ReadKey();
+            */
         }
     }
 }
