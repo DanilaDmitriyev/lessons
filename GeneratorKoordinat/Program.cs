@@ -11,7 +11,7 @@ namespace GeneratorKoordinat
     {
         static void Main(string[] args)
         {
-            
+            /*
             int step = 6;
             //int nX = 10; //количество узлов по оси Х.
             //int nY = 10; //количество узлов по оси У.
@@ -89,7 +89,7 @@ namespace GeneratorKoordinat
                 streamWriter.WriteLine(" \"/>");
                 streamWriter.WriteLine("</svg>");
             }
-            /*
+            
             Console.WriteLine("X");           
             foreach(var item in xcoord)
             {
@@ -101,7 +101,8 @@ namespace GeneratorKoordinat
                 Console.WriteLine(item);
             }
             Console.ReadKey();
-            
+            */
+
             Console.WriteLine("Введите ширину комнаты в мм, например 4000");
             float roomWidth = float.Parse(Console.ReadLine());
 
@@ -112,20 +113,25 @@ namespace GeneratorKoordinat
             float step = float.Parse(Console.ReadLine());
 
             int stripNumberX = (int)(roomWidth / step);
+            Console.WriteLine("Количество полос по ости Х равно: " + stripNumberX);
             int stripNumberY = (int)(roomHeight / step);
 
             int knotNumberWidth = stripNumberX + 1;
+            Console.WriteLine("Количество шагов по оси Х равно: " + knotNumberWidth);
             int knotNumberHeight = stripNumberY + 1;
+
+            float[] xcoord = new float[knotNumberWidth];
+            float[] ycoord = new float[knotNumberHeight];
 
             float tempUdlinenieХ = roomWidth / roomHeight;
             float tempUdlinenieY = roomHeight / roomWidth;
             float udlinenieX = 1;
             float udlinenieY = 1;
 
-            if (tempUdlinenieY/tempUdlinenieХ> 1)
+            if (tempUdlinenieY / tempUdlinenieХ > 1)
             {
                 udlinenieY = tempUdlinenieY / tempUdlinenieХ;
-                            }
+            }
             else if (tempUdlinenieY / tempUdlinenieХ < 1)
             {
                 udlinenieX = tempUdlinenieY / tempUdlinenieY;
@@ -165,8 +171,25 @@ namespace GeneratorKoordinat
                 Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)MarginesHeight);
             }
 
+            xcoord[0] = MarginesWidth;
+            ycoord[0] = 0;
+
+            for (int i = 1; i < 5; i++)
+            {
+                xcoord[i] = xcoord[i - 1];
+                xcoord[i + 1] = xcoord[i] + step * (knotNumberWidth - i);
+                xcoord[i + 2] = xcoord[i + 1];
+                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumberWidth - i);
+            }
+
+            Console.WriteLine("X"); 
+            foreach (float x in xcoord)
+            {
+                Console.WriteLine(x);
+            }
+        
             Console.ReadKey();
-            */
+            
         }
     }
 }
