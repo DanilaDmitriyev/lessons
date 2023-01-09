@@ -62,6 +62,7 @@ namespace WriteToFile
 
             foreach(char x in chars) { myStream.WriteLine(x); }
 
+            //Сделать вывод матрицы в файл.
 
             Console.ReadKey();
 
