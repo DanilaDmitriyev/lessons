@@ -106,13 +106,19 @@ namespace GeneratorKoordinat
             */
 
             Console.WriteLine("Введите ширину комнаты в мм, например 4000");
-            float roomWidth = float.Parse(Console.ReadLine());
+            string inputRW = Console.ReadLine();
+            float roomWidth = String.IsNullOrEmpty(inputRW) ? 4000 : float.Parse(inputRW); //ввод значения по умолчанию через Enter
+            
 
             Console.WriteLine("Введите длину комнат в мм, например 8000");
-            float roomHeight = float.Parse(Console.ReadLine());
+            string inputRH = Console.ReadLine();
+            float roomHeight = String.IsNullOrEmpty(inputRH) ? 8000 : float.Parse(inputRH);
+
 
             Console.WriteLine("Введите шаг трубы в мм (расстояние межуд параллельными трубами), к примеру 200");
-            float step = float.Parse(Console.ReadLine());
+            string inputS = Console.ReadLine();
+            float step = String.IsNullOrEmpty(inputS) ? 200 : float.Parse(inputS);
+            
 
             int stripNumberX = (int)(roomWidth / step);
             Console.WriteLine("Количество полос по ости Х равно: " + stripNumberX);
@@ -181,13 +187,12 @@ namespace GeneratorKoordinat
             for (int i = 1; i < knotNumberWidth-3; i+=4)
             {
                 xcoord[i] = xcoord[i - 1];
-                Console.WriteLine("x2 = " + (xcoord[i + 1] = xcoord[i] + step * (knotNumberWidth - i)));
+                xcoord[i + 1] = xcoord[i] + step * (knotNumberWidth -2 - i);
                 xcoord[i + 2] = xcoord[i + 1];
-                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumberWidth - i);
+                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumberWidth - 3 -i);
             }
 
             Console.WriteLine("шаг = " + step);
-            Console.WriteLine("x2 = " + xcoord[2]); 
             Console.WriteLine("X"); 
             foreach (float x in xcoord)
             {
@@ -199,12 +204,7 @@ namespace GeneratorKoordinat
 
 
         }
-        private static float [] Raschet(int x, float[] z) 
-        {
-           
-            
-            return z;
-        }
+        
     }
 }
 
