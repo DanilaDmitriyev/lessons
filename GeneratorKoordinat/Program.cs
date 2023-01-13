@@ -110,9 +110,9 @@ namespace GeneratorKoordinat
             float roomWidth = String.IsNullOrEmpty(inputRW) ? 4000 : float.Parse(inputRW); //ввод значения по умолчанию через Enter
             
 
-            Console.WriteLine("Введите длину комнат в мм, например 8000");
+            Console.WriteLine("Введите длину комнат в мм, например 4000");
             string inputRH = Console.ReadLine();
-            float roomHeight = String.IsNullOrEmpty(inputRH) ? 8000 : float.Parse(inputRH);
+            float roomHeight = String.IsNullOrEmpty(inputRH) ? 4000 : float.Parse(inputRH);
 
 
             Console.WriteLine("Введите шаг трубы в мм (расстояние межуд параллельными трубами), к примеру 200");
@@ -120,9 +120,10 @@ namespace GeneratorKoordinat
             float step = String.IsNullOrEmpty(inputS) ? 200 : float.Parse(inputS);
             
 
-            int stripNumberX = (int)(roomWidth / step);
+            int stripNumberX = (int)(roomHeight / step);
             Console.WriteLine("Количество полос по ости Х равно: " + stripNumberX);
-            int stripNumberY = (int)(roomHeight / step);
+            //int stripNumberY = (int)(roomHeight / step);
+            int stripNumberY = stripNumberX;
 
             int knotNumberWidth = stripNumberX + 1;
             Console.WriteLine("Количество шагов по оси Х равно: " + knotNumberWidth);
@@ -180,16 +181,24 @@ namespace GeneratorKoordinat
             }
 
             xcoord[0] = MarginesWidth;
-            ycoord[0] = 0;
+            ycoord[0] = MarginesHeight;
 
           
 
-            for (int i = 1; i < knotNumberWidth-3; i+=4)
+            for (int i = 1; i < knotNumberWidth; i+=4)
             {
                 xcoord[i] = xcoord[i - 1];
-                xcoord[i + 1] = xcoord[i] + step * (knotNumberWidth -2 - i);
+                xcoord[i + 1] = xcoord[i] + step * (knotNumberWidth -1 - i) * udlinenieX;
                 xcoord[i + 2] = xcoord[i + 1];
-                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumberWidth - 3 -i);
+                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumberWidth - 3 -i) * udlinenieX;
+            }
+
+            for (int i = 1; i < knotNumberHeight; i += 4)
+            {
+                ycoord[i] = ycoord[i-1] + step * (knotNumberWidth - 1 - i);
+                ycoord[i + 1] = ycoord[i]; 
+                ycoord[i + 2] = ycoord[i + 1] - step * (knotNumberWidth - 3 - i);
+                ycoord[i + 3] = ycoord[i + 2];
             }
 
             Console.WriteLine("шаг = " + step);
@@ -198,7 +207,12 @@ namespace GeneratorKoordinat
             {
                 Console.WriteLine(x);
             }
-        
+
+            Console.WriteLine("Y");
+            foreach (float y in ycoord)
+            {
+                Console.WriteLine(y);
+            }
             Console.ReadKey();
             
 
