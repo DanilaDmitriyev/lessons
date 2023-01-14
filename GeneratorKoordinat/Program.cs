@@ -14,72 +14,6 @@ namespace GeneratorKoordinat
         static void Main(string[] args)
         {
             /*
-            int step = 6;
-            //int nX = 10; //количество узлов по оси Х.
-            //int nY = 10; //количество узлов по оси У.
-           
-            float x1 = 0;
-            float y1 = 0;
-            float x2 = 0;
-            float y2 = 14;
-            float x3 = 14;
-            float y3 = 14;
-            float x4 = 14;
-            float y4 = 2;
-
-
-            List<float> xcoord = new List<float>();
-            List<float> ycoord = new List<float>();
-
-
-            xcoord.Add(x1);
-            xcoord.Add(x2);
-            xcoord.Add(x3);
-            xcoord.Add(x4);
-            ycoord.Add(y1);
-            ycoord.Add(y2);
-            ycoord.Add(y3);
-            ycoord.Add(y4);
-
-            for (int i=0; i < step/2; i++)
-            {
-              
-                x1 = x1 + 2; //координата х первой точки
-                y1 = y1 + 2; //координата y первой точки равна y1
-                x2 = x2 + 2; //координата х второй точки
-                y2 = y2 - 2 ; //координата у второй точки равна у1
-                x3 = x3 - 2; //координата х третьей точки
-                y3 = y3 - 2; //координата у третьей точки
-                x4 = x4 - 2;     //координата х четвертой точки
-                y4 = y4 + 2; //координата у четвертой точки
-                xcoord.Add(x1);
-                xcoord.Add(x2);
-                xcoord.Add(x3);
-                xcoord.Add(x4);
-                ycoord.Add(y1);
-                ycoord.Add(y2);
-                ycoord.Add(y3);
-                ycoord.Add(y4);
-
-            }
-            x1=x4;
-            y1 = y4 -1;
-            x2 = x1 + 1;
-            y2 = y1;
-            x3 = x2 ;
-            y3 = y2 + 2;
-            x4 = x3 - 4;
-            y4 = y3;
-
-            xcoord.Add(x1);
-            xcoord.Add(x2);
-            xcoord.Add(x3);
-            xcoord.Add(x4);
-            ycoord.Add(y1);
-            ycoord.Add(y2);
-            ycoord.Add(y3);
-            ycoord.Add(y4);
-
             using (StreamWriter streamWriter = new StreamWriter("figura.html"))
             {
                 streamWriter.WriteLine("<svg width=\"500\" height=\"500\">");
@@ -91,28 +25,16 @@ namespace GeneratorKoordinat
                 streamWriter.WriteLine(" \"/>");
                 streamWriter.WriteLine("</svg>");
             }
-            
-            Console.WriteLine("X");           
-            foreach(var item in xcoord)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("Y");
-            foreach (var item in ycoord)
-            {
-                Console.WriteLine(item);
-            }
-            Console.ReadKey();
             */
 
-            Console.WriteLine("Введите ширину комнаты в мм, например 4000");
+            Console.WriteLine("Введите ширину комнаты в мм (шириной считаем меньшую сторону прямоугольника комнаты), например 4000");
             string inputRW = Console.ReadLine();
-            float roomWidth = String.IsNullOrEmpty(inputRW) ? 4000 : float.Parse(inputRW); //ввод значения по умолчанию через Enter
+            float roomWidthX = String.IsNullOrEmpty(inputRW) ? 4000 : float.Parse(inputRW); //ввод значения по умолчанию через Enter
             
 
-            Console.WriteLine("Введите длину комнат в мм, например 4000");
+            Console.WriteLine("Введите длину комнаты в мм (длиной считаем большую сторону прямоугольника комнаты), например 4000");
             string inputRH = Console.ReadLine();
-            float roomHeight = String.IsNullOrEmpty(inputRH) ? 4000 : float.Parse(inputRH);
+            float roomHeightY = String.IsNullOrEmpty(inputRH) ? 4000 : float.Parse(inputRH);
 
 
             Console.WriteLine("Введите шаг трубы в мм (расстояние межуд параллельными трубами), к примеру 200");
@@ -120,42 +42,22 @@ namespace GeneratorKoordinat
             float step = String.IsNullOrEmpty(inputS) ? 200 : float.Parse(inputS);
             
 
-            int stripNumberX = (int)(roomHeight / step);
-            Console.WriteLine("Количество полос по ости Х равно: " + stripNumberX);
-            //int stripNumberY = (int)(roomHeight / step);
-            int stripNumberY = stripNumberX;
+            int stripNumber = (int)(roomWidthX / step);
+            Console.WriteLine("Количество полос по ости Х равно: " + stripNumber);
+            
+            int knotNumber = stripNumber + 1;
+            Console.WriteLine("Количество шагов по оси Х равно: " + knotNumber);
+            
+            float[] xcoord = new float[knotNumber];
+            float[] ycoord = new float[knotNumber];
 
-            int knotNumberWidth = stripNumberX + 1;
-            Console.WriteLine("Количество шагов по оси Х равно: " + knotNumberWidth);
-            int knotNumberHeight = stripNumberY + 1;
+            float UdlinenieY = (float) Math.Round(roomHeightY / roomWidthX, 1);
+            
 
-            float[] xcoord = new float[knotNumberWidth];
-            float[] ycoord = new float[knotNumberHeight];
-
-            float tempUdlinenieХ = roomWidth / roomHeight;
-            float tempUdlinenieY = roomHeight / roomWidth;
-            float udlinenieX = 1;
-            float udlinenieY = 1;
-
-            if (tempUdlinenieY / tempUdlinenieХ > 1)
-            {
-                udlinenieY = tempUdlinenieY / tempUdlinenieХ;
-            }
-            else if (tempUdlinenieY / tempUdlinenieХ < 1)
-            {
-                udlinenieX = tempUdlinenieY / tempUdlinenieY;
-            }
-            else if (tempUdlinenieY == tempUdlinenieХ)
-            {
-                udlinenieX = 1;
-                udlinenieY = 1;
-            }
-
-
-            float tempMarginesWidth = roomWidth - step * stripNumberX;
+            float tempMarginesWidth = roomWidthX - step * stripNumber;
             float MarginesWidth = 0;
 
-            float tempMarginesHeight = roomHeight - step * stripNumberY;
+            float tempMarginesHeight = roomHeightY - step * stripNumber;
             float MarginesHeight = 0;
 
             if (tempMarginesWidth == 0)
@@ -165,7 +67,7 @@ namespace GeneratorKoordinat
             }
             else if (tempMarginesWidth < step)
             {
-                MarginesWidth = (roomWidth - step * stripNumberX) / 2;
+                MarginesWidth = (roomWidthX - step * stripNumber) / 2;
                 Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)MarginesWidth);
             }
 
@@ -176,7 +78,7 @@ namespace GeneratorKoordinat
             }
             else if (tempMarginesHeight < step)
             {
-                MarginesHeight = (roomHeight - step * stripNumberY) / 2;
+                MarginesHeight = (roomHeightY - step * stripNumber) / 2;
                 Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)MarginesHeight);
             }
 
@@ -185,19 +87,19 @@ namespace GeneratorKoordinat
 
           
 
-            for (int i = 1; i < knotNumberWidth; i+=4)
+            for (int i = 1; i < knotNumber; i+=4)
             {
                 xcoord[i] = xcoord[i - 1];
-                xcoord[i + 1] = xcoord[i] + step * (knotNumberWidth -1 - i) * udlinenieX;
+                xcoord[i + 1] = xcoord[i] + step * (knotNumber -1 - i);
                 xcoord[i + 2] = xcoord[i + 1];
-                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumberWidth - 3 -i) * udlinenieX;
+                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumber - 3 -i);
             }
 
-            for (int i = 1; i < knotNumberHeight; i += 4)
+            for (int i = 1; i < knotNumber; i += 4)
             {
-                ycoord[i] = ycoord[i-1] + step * (knotNumberWidth - 1 - i);
+                ycoord[i] = ycoord[i-1] + step * (knotNumber - 1 - i);
                 ycoord[i + 1] = ycoord[i]; 
-                ycoord[i + 2] = ycoord[i + 1] - step * (knotNumberWidth - 3 - i);
+                ycoord[i + 2] = ycoord[i + 1] - step * (knotNumber - 3 - i);
                 ycoord[i + 3] = ycoord[i + 2];
             }
 
