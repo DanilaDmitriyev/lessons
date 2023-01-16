@@ -29,12 +29,12 @@ namespace GeneratorKoordinat
 
             Console.WriteLine("Введите ширину комнаты в мм (шириной считаем меньшую сторону прямоугольника комнаты), например 4000");
             string inputRW = Console.ReadLine();
-            float roomWidthX = String.IsNullOrEmpty(inputRW) ? 4000 : float.Parse(inputRW); //ввод значения по умолчанию через Enter
+            float roomWidthY = String.IsNullOrEmpty(inputRW) ? 4000 : float.Parse(inputRW); //ввод значения по умолчанию через Enter
             
 
             Console.WriteLine("Введите длину комнаты в мм (длиной считаем большую сторону прямоугольника комнаты), например 4000");
             string inputRH = Console.ReadLine();
-            float roomHeightY = String.IsNullOrEmpty(inputRH) ? 4000 : float.Parse(inputRH);
+            float roomHeightX = String.IsNullOrEmpty(inputRH) ? 4000 : float.Parse(inputRH);
 
 
             Console.WriteLine("Введите шаг трубы в мм (расстояние межуд параллельными трубами), к примеру 200");
@@ -42,22 +42,22 @@ namespace GeneratorKoordinat
             float step = String.IsNullOrEmpty(inputS) ? 200 : float.Parse(inputS);
             
 
-            int stripNumber = (int)(roomWidthX / step);
-            Console.WriteLine("Количество полос по ости Х равно: " + stripNumber);
+            int stripNumber = (int)(roomWidthY / step);
+            Console.WriteLine("Количество полос по ости Y равно: " + stripNumber);
             
             int knotNumber = stripNumber + 1;
-            Console.WriteLine("Количество шагов по оси Х равно: " + knotNumber);
+            Console.WriteLine("Количество шагов по оси Y равно: " + knotNumber);
             
             float[] xcoord = new float[knotNumber];
             float[] ycoord = new float[knotNumber];
 
-            float UdlinenieY = (float) Math.Round(roomHeightY / roomWidthX, 1);
+            float UdlinenieX = (float) Math.Round(roomHeightX / roomWidthY, 1);
             
 
-            float tempMarginesWidth = roomWidthX - step * stripNumber;
+            float tempMarginesWidth = roomWidthY - step * stripNumber;
             float MarginesWidth = 0;
 
-            float tempMarginesHeight = roomHeightY - step * stripNumber;
+            float tempMarginesHeight = roomHeightX - step * stripNumber;
             float MarginesHeight = 0;
 
             if (tempMarginesWidth == 0)
@@ -67,7 +67,7 @@ namespace GeneratorKoordinat
             }
             else if (tempMarginesWidth < step)
             {
-                MarginesWidth = (roomWidthX - step * stripNumber) / 2;
+                MarginesWidth = (roomWidthY - step * stripNumber) / 2;
                 Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)MarginesWidth);
             }
 
@@ -78,7 +78,13 @@ namespace GeneratorKoordinat
             }
             else if (tempMarginesHeight < step)
             {
-                MarginesHeight = (roomHeightY - step * stripNumber) / 2;
+                MarginesHeight = (roomHeightX - step * stripNumber) / 2;
+                Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)MarginesHeight);
+            }
+
+            else if (tempMarginesHeight > step)
+            {
+                MarginesHeight = step / 2;
                 Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)MarginesHeight);
             }
 
@@ -90,9 +96,9 @@ namespace GeneratorKoordinat
             for (int i = 1; i < knotNumber; i+=4)
             {
                 xcoord[i] = xcoord[i - 1];
-                xcoord[i + 1] = xcoord[i] + step * (knotNumber -1 - i);
+                xcoord[i + 1] = xcoord[i] + step * (knotNumber -1 - i) * UdlinenieX;
                 xcoord[i + 2] = xcoord[i + 1];
-                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumber - 3 -i);
+                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumber - 3 -i) * UdlinenieX;
             }
 
             for (int i = 1; i < knotNumber; i += 4)
