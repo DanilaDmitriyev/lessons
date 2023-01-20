@@ -43,69 +43,49 @@ namespace GeneratorKoordinat
             
 
             int stripNumber = (int)(roomWidthY / step);
-            Console.WriteLine("Количество полос по ости Y равно: " + stripNumber);
+            Console.WriteLine("Количество полос по ости Y или X равно: " + stripNumber);
             
-            int knotNumber = stripNumber + 1;
-            Console.WriteLine("Количество шагов по оси Y равно: " + knotNumber);
             
-            float[] xcoord = new float[knotNumber];
-            float[] ycoord = new float[knotNumber];
-
-            float udlinenieX = (float) Math.Round(roomHeightX / roomWidthY, 1);
             
+            float[] xcoord = new float[stripNumber + 1];
+            float[] ycoord = new float[stripNumber + 1];
 
-            float tempMarginesWidth = roomWidthY - step * stripNumber;
-            float marginesWidth = 0;
-
-            float tempMarginesHeight = roomHeightX - step * stripNumber;
-            float marginesHeight = 0;
-
-            if (tempMarginesWidth == 0)
-            {
-                marginesWidth = step / 2;
-                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)marginesWidth);
-            }
-            else if (tempMarginesWidth < step)
-            {
-                marginesWidth = (roomWidthY - step * stripNumber) / 2;
-                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)marginesWidth);
-            }
-
-            if (tempMarginesHeight == 0)
-            {
-                marginesHeight = step / 2;
-                Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)marginesHeight);
-            }
-            else if (tempMarginesHeight < step)
-            {
-                marginesHeight = (roomHeightX - step * stripNumber) / 2;
-                Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)marginesHeight);
-            }
-
-            else if (tempMarginesHeight > step)
-            {
-                marginesHeight = step / 2;
-                Console.WriteLine("Отступ труб от стены по длине комнаты = " + (int)marginesHeight);
-            }
-
-            xcoord[0] = marginesWidth;
             
-            ycoord[0] = marginesHeight;
+            float tempMarginesWidthY = roomWidthY - step * stripNumber;
+            float marginesWidthY = 0;
+
+            if (tempMarginesWidthY == 0)
+            {
+                marginesWidthY = step / 2;
+                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)marginesWidthY);
+            }
+            else if (tempMarginesWidthY < step)
+            {
+                marginesWidthY = (roomWidthY - step * stripNumber) / 2;
+                Console.WriteLine("Отступ труб от стены по ширине комнаты = " + (int)marginesWidthY);
+            }
+
+            float marginesHeightX = step / 2;
+            float stepX = (roomHeightX - step) / stripNumber;
+
+            xcoord[0] = marginesWidthY;
+            
+            ycoord[0] = marginesHeightX;
            
 
-            for (int i = 1; i < knotNumber; i+=4)
+            for (int i = 1; i < stripNumber + 1; i+=4)
             {
                 xcoord[i] = xcoord[i - 1];
-                xcoord[i + 1] = xcoord[i] + step * (knotNumber -1 - i) * udlinenieX + (tempMarginesHeight - marginesHeight)/(knotNumber + 1); //проблема в неверном расчёте (tempMarginesHeight - marginesHeight)/(knotNumber + 1)
+                xcoord[i + 1] = xcoord[i] + step * (stripNumber - i); 
                 xcoord[i + 2] = xcoord[i + 1];
-                xcoord[i + 3] = xcoord[i + 2] - step * (knotNumber - 3 -i) * udlinenieX - (step * udlinenieX - step) / (knotNumber) - (tempMarginesHeight - marginesHeight)/(knotNumber + 1);
+                xcoord[i + 3] = xcoord[i + 2] - step * (stripNumber -2 -i);
             }
 
-            for (int i = 1; i < knotNumber; i += 4)
+            for (int i = 1; i < stripNumber + 1; i += 4)
             {
-                ycoord[i] = ycoord[i-1] + step * (knotNumber - 1 - i);
+                ycoord[i] = ycoord[i-1] + step * (stripNumber - i);
                 ycoord[i + 1] = ycoord[i]; 
-                ycoord[i + 2] = ycoord[i + 1] - step * (knotNumber - 3 - i);
+                ycoord[i + 2] = ycoord[i + 1] - step * (stripNumber -2 - i);
                 ycoord[i + 3] = ycoord[i + 2];
             }
 
