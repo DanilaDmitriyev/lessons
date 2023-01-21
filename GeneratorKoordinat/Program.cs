@@ -68,17 +68,17 @@ namespace GeneratorKoordinat
             float marginesHeightX = step / 2;
             float stepX = (roomHeightX - step) / stripNumber;
 
-            xcoord[0] = marginesWidthY;
-            
-            ycoord[0] = marginesHeightX;
+            xcoord[0] = marginesHeightX;
+
+            ycoord[0] = marginesWidthY;
            
 
             for (int i = 1; i < stripNumber + 1; i+=4)
             {
                 xcoord[i] = xcoord[i - 1];
-                xcoord[i + 1] = xcoord[i] + step * (stripNumber - i); 
+                xcoord[i + 1] = xcoord[i] + stepX * (stripNumber + 1 - i); 
                 xcoord[i + 2] = xcoord[i + 1];
-                xcoord[i + 3] = xcoord[i + 2] - step * (stripNumber -2 -i);
+                xcoord[i + 3] = xcoord[i + 2] - stepX * (stripNumber - 1 - i);
             }
 
             for (int i = 1; i < stripNumber + 1; i += 4)
