@@ -13,19 +13,7 @@ namespace GeneratorKoordinat
     {
         static void Main(string[] args)
         {
-            /*
-            using (StreamWriter streamWriter = new StreamWriter("figura.html"))
-            {
-                streamWriter.WriteLine("<svg width=\"500\" height=\"500\">");
-                streamWriter.Write($"<path stroke=\"blue\" fill=\"transparent\" stroke-width=\"4px\" d=\"M {2 + xcoord[0]*35 } {498 - ycoord[0]*35 } ");
-                for (int i = 1; i<xcoord.Count; i++)
-                {
-                    streamWriter.Write($"L {2 + xcoord[i] * 35} {498 - ycoord[i] * 35} ");
-                }
-                streamWriter.WriteLine(" \"/>");
-                streamWriter.WriteLine("</svg>");
-            }
-            */
+            
 
             Console.WriteLine("Введите ширину комнаты в мм (шириной считаем меньшую сторону прямоугольника комнаты), например 4000");
             string inputRW = Console.ReadLine();
@@ -102,11 +90,25 @@ namespace GeneratorKoordinat
                 Console.WriteLine(y);
             }
             Console.ReadKey();
+
+            
+            using (StreamWriter streamWriter = new StreamWriter("figura.html"))
+            {
+                streamWriter.WriteLine($"<svg width=\"{roomHeightX}\" height=\"{roomWidthY}\">");
+                streamWriter.Write($"<path stroke=\"blue\" fill=\"transparent\" stroke-width=\"4px\" d=\"M {2 + xcoord[0] } {roomWidthY - ycoord[0] } ");
+                for (int i = 1; i<xcoord.Length; i++)
+                {
+                    streamWriter.Write($"L {2 + xcoord[i] } {roomWidthY - ycoord[i]} ");
+                }
+                streamWriter.WriteLine(" \"/>");
+                streamWriter.WriteLine("</svg>");
+            }
             
 
 
+
         }
-        
+
     }
 }
 
