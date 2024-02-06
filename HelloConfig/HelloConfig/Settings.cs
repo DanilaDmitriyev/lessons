@@ -1,19 +1,20 @@
-﻿using Microsoft.VisualBasic;
-
-namespace HelloConfig
+﻿namespace HelloConfig
 {
-    public class Settings
-    {
-        public IConfiguration config { get; set; }
-        public Settings(string rootPath)
-        {
-            var configurationBinder = new ConfigurationBuilder();
-            configurationBinder.SetBasePath(rootPath);
-            configurationBinder.AddJsonFile("appsettings.json");
-            config = configurationBinder.Build();
-           
-        } 
-            
-        
-    }
+	public class Settings
+	{
+		//Свойство, хранящее набор значений параметров сервера
+		public IConfiguration config { get; set; }
+
+		public Settings(string rootPath)
+		{
+			//Определяем объект построителя конфигурации
+			var configurationBinder = new ConfigurationBuilder();
+			//Устанавливаем путь, по которому будет осуществляться поиск файла 	конфигурации
+			configurationBinder.SetBasePath(rootPath);
+			//Задаем имя файла конфигурации
+			configurationBinder.AddJsonFile("appsettings.json");
+			//Создаем конфигурацию
+			config = configurationBinder.Build();
+		}
+	}
 }
