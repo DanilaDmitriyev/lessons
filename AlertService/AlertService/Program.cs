@@ -16,6 +16,6 @@ app.MapGet("/", async context =>
 		html += $"Время жизни: {service.Lifetime}<br>";
 		html += $"Тип реализации: { service.ImplementationType?.FullName}< br >< hr > ";
 	}
-	await context.Response.WriteAsync(html);
+	await context.Response.WriteAsync(html);//
 });
 app.Run();
